@@ -1,0 +1,18 @@
+#!/usr/bin/env python3
+
+def countingValleys(n, s):
+    displacement = 0
+    valleysCount = 0
+    for step in s:
+        if step == 'U':
+            displacement += 1
+        else:
+            displacement -= 1
+            if displacement == -1:
+                valleysCount += 1
+    return valleysCount
+
+sampleInputs = ["UDDDUDUU", "UDDDUDUUDDUUUUDD"]
+
+for sampleInput in sampleInputs:
+    print("No of Valleys in {0} are {1}".format(sampleInput, countingValleys(len(sampleInput), sampleInput)))
