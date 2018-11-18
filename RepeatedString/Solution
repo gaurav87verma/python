@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+
+def repeatedString(s, n):
+    result = 0
+    
+    '''Iterate through s to count number of a in it'''
+    for char in s:
+        if char == 'a':
+            result += 1
+    
+    '''number of complete repeatations'''
+    repeats = n//len(s)
+    
+    '''length of last substring'''
+    subLength = n%len(s)
+    
+    '''occurences till the end of complete repetations'''
+    result = result * repeats
+    
+    '''add occurences of a in last substring'''
+    for pos in range(subLength):
+        if s[pos] == 'a':
+            result +=1
+
+    return result
+
+print(repeatedString('aba',10));
+print(repeatedString('a',10000));
