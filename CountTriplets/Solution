@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+
+def countTriplets(arr, r):
+    numbersDict      = {}
+    numberOfTriplets = 0
+
+    '''Covert array to a dictionary:
+       where key is the element & value is 
+       the number of elements's occurences'''
+    for num in arr:
+        if num in numbersDict.keys():
+            numbersDict[num] += 1
+        else:
+            numbersDict[num] = 1
+
+    for key,value in numbersDict.items():
+        if r == 1:
+            if value >= 3:
+                numberOfTriplets += (value*(value - 1)*(value-2))//6
+        else:
+            if (key*r in numbersDict) and (key*r*r in numbersDict):
+                numberOfTriplets += (value * numbersDict[key*r] * numbersDict[key*r*r])
+    return numberOfTriplets
+
+print(countTriplets([1,3,9,9,27,81],3))
+print(countTriplets([1,1,1,1,1],1))
+# Shouldn't count {2,1,4} <- cant go to 1 from 2
+print(countTriplets([1,2,1,2,4],2))
